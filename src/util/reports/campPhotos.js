@@ -1,6 +1,7 @@
 const hl = require("highland");
 const _ = require("lodash");
 const { GoogleSpreadsheet } = require('google-spreadsheet');
+console.log ('started!!!!!!!!!') ;
 /*
 // spreadsheet key is the long id in the sheets URL
 const doc = new GoogleSpreadsheet('<the sheet ID from the url>');
