@@ -1,6 +1,16 @@
 const hl = require("highland");
 const _ = require("lodash");
+const { GoogleSpreadsheet } = require('google-spreadsheet');
+/*
+// spreadsheet key is the long id in the sheets URL
+const doc = new GoogleSpreadsheet('<the sheet ID from the url>');
 
+// use service account creds
+await doc.useServiceAccountAuth({
+  client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+  private_key: process.env.GOOGLE_PRIVATE_KEY,
+});
+*/
 const {
   streamRegistrations,
   streamPeople,
