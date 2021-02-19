@@ -12,8 +12,7 @@ const fairFaxHeaders = {
   openSpots: "Open Spots"
 };
 
-console.log(fairfaxData);
-module.exports = () =>
+const func = () =>
   hl(fetch(fairfaxData))
     .flatMap(response => hl(response.text()))
     .map(data => cheerio.load(data))
@@ -42,3 +41,5 @@ module.exports = () =>
     .collect()
     .map(sheets => createBook(sheets, 0, fairFaxHeaders, "Fairfax Enrollment"))
     .merge();
+
+export default func
