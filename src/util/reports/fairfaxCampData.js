@@ -45,11 +45,8 @@ const func = () =>
         campCode,
         location,
         dateRange,
-        openSpots
-
-
-,
-        sessionName
+        openSpots,
+        sessionName,
       }));
     })
     .map(rows => [fairFaxHeaders, ...rows])
