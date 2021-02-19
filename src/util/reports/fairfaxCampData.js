@@ -31,7 +31,7 @@ module.exports = () =>
           .map(a => a.trim())
           .filter(a => !!a)
       );
-      return textRows.map(([campCode, location, dateRange, , , openSpots]) => ({
+      return textRows.map(([campCode, location, dateRange, , openSpots]) => ({
         campCode,
         location,
         dateRange,
