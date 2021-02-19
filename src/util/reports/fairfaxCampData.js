@@ -9,7 +9,8 @@ const fairFaxHeaders = {
   campCode: "Camp Code",
   location: "Camp Location",
   dateRange: "Date Range",
-  openSpots: "Open Spots"
+  openSpots: "Open Spots",
+  sessionName: "Session Name"
 };
 
 const func = () =>
@@ -17,6 +18,16 @@ const func = () =>
     .flatMap(response => hl(response.text()))
     .map(data => cheerio.load(data))
     .map($ => {
+      const nodeRowsH2 = $(".FindTour")
+        .contents()
+        .map((i, el) => el.data)
+        .toArray()
+      
+      nodeRowsH2.forEach(function(i, o) {
+        $("#mainContent_repeaterActivities_activitySnapshot_"+o+"_sessionPanel").find('tr').append('<td>'+i+'</td>');
+
+      });  
+     
       const nodeRows = $(".sessions.panel")
         .find("tbody")
         .find("tr")
@@ -30,11 +41,12 @@ const func = () =>
           .map(a => a.trim())
           .filter(a => !!a)
       );
-      return textRows.map(([campCode, location, dateRange, , openSpots]) => ({
+      return textRows.map(([campCode, location, dateRange, , openSpots,,sessionName]) => ({
         campCode,
         location,
         dateRange,
-        openSpots
+        openSpots,
+        sessionName
       }));
     })
     .map(rows => [fairFaxHeaders, ...rows])
